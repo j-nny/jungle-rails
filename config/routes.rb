@@ -20,8 +20,8 @@ Rails.application.routes.draw do
   # namespace :about do
   #   root to: 'about#show'
   # end
-  get '/about' => 'about#show'
-  # resources :about, only [:show]
+  # get '/about' => 'about#index'
+  resources :about, only: [:index]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
