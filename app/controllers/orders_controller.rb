@@ -4,6 +4,11 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
+  def order_info
+    @order_info = LineItem.where(order_id: params[:id]).map { |item| { item:item, product:Product.where(id: item.product_id).first } }
+  end
+  helper_method :order_info
+
   def create
     charge = perform_stripe_charge
     order  = create_order(charge)
